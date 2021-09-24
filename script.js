@@ -1,4 +1,4 @@
-// Assignment Code
+
 var generateBtn = document.querySelector("#generate");
 
 const lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
@@ -8,60 +8,48 @@ const specChar = ["!","@","#","$","%","^","&","*","(",")"]
 
 
 
-// added in
+
+
 function generatePassword() {
 
 
-var charInput = prompt("Please choose a length of charcters between 8 and 128");
+var charInput = parseInt(prompt("Please choose a length of charcters between 8 and 128"));
     if (charInput < 8 || charInput > 128) {
-        alert("Please choose a number between 8 and 128");
-       
+        alert("Please choose a number between 8 and 128");  
+        return     
     }
 
 
-var charCount
-var newArray = []
+var passwordArray = []
 var holdingArray = []
 
 
-
-
     if (confirm("Lowercase?")) {
-    holdingArray = holdingArray.concat(lowerCase)
-}
+        holdingArray = holdingArray.concat(lowerCase)
+    }
     if (confirm("Uppercase?")) {
-    holdingArray = holdingArray.concat(upperCase)
-   }
+        holdingArray = holdingArray.concat(upperCase)
+    }
     if (confirm("Numbers?")) {
-    holdingArray = holdingArray.concat(numValue)
-   }
+        holdingArray = holdingArray.concat(numValue)
+    }
     if (confirm("Special Characters?")) {
-    holdingArray = holdingArray.concat(specChar)
-   }
+        holdingArray = holdingArray.concat(specChar)
+    }
     if (holdingArray.length == 0) {
-    alert("retry")
-    // return
-}
-
-    for (let i = 0; i < charInput; i++) {
-    var randomChar = holdingArray[Math.floor(Math.random()*holdingArray.length)];
-    newArray.push(randomChar);
-}
-
-    return newArray
-     
-    
+        alert("retry")
     }
 
-// console.log(charInput)
-// console.log(holdingArray)
-// console.log(newArray)
-// console.log(confirm("Lowercase?"))
+    for (let i = 0; i < charInput; i++) {
+        var randomChar = holdingArray[Math.floor(Math.random()*holdingArray.length)];
+        passwordArray.push(randomChar);
+    }
+
+    return passwordArray.join("").toString()
+        
+}
 
 
-
-
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
@@ -71,14 +59,9 @@ function writePassword() {
 }
 
 
-
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 
-// generatePassword()
-writePassword()
 
 
 
